@@ -1,1 +1,19 @@
-<p>header works!</p>
+<div class="header">
+  <div class="header-bar">
+    <span>aleks_thunder</span>
+  </div>
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a (click)="scrollToElement('about')">About</a>
+      </li>
+      <li class="breadcrumb-item" (click)="scrollToElement('tech-stack')">
+        <a>Tech stack</a>
+      </li>
+      <li class="breadcrumb-item" (click)="scrollToElement('contact')">
+        <a>Contact</a>
+      </li>
+    </ol>
+  </nav>
+</div>
