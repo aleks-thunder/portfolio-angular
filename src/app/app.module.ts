@@ -2,11 +2,15 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './page-components/header/header.component';
-import { AboutComponent } from './page-components/about/about.component';
-import { TechStackComponent } from './page-components/tech-stack/tech-stack.component';
-import { ContactComponent } from './page-components/contact/contact.component';
-import { EmailService } from './services/email.service';
+
+import { HeaderComponent } from '@pages/header/header.component';
+import { AboutComponent } from '@pages/about/about.component';
+import { TechStackComponent } from '@pages/tech-stack/tech-stack.component';
+import { ContactComponent } from '@pages/contact/contact.component';
+
+import { EmailService } from '@services/email.service';
+
+import { SharedModule } from '@shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -16,7 +20,7 @@ import { EmailService } from './services/email.service';
     TechStackComponent,
     ContactComponent,
   ],
-  imports: [BrowserModule],
+  imports: [BrowserModule, SharedModule],
   providers: [EmailService],
   bootstrap: [AppComponent],
 })
