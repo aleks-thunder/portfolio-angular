@@ -12,6 +12,18 @@ import {
   styleUrls: [],
 })
 export class FlexComponent {
+  @Input() set flexPosition(flexPosition: FlexPositionProps) {
+    this.flexProps.flexPosition = flexPosition;
+  }
+
+  @Input() set dimensions(dimensions: DimensionProps) {
+    this.flexProps.dimensions = dimensions;
+  }
+
+  @Input() set spacing(spacing: SpacingProps) {
+    this.flexProps.spacing = spacing;
+  }
+
   flexProps: FlexProps = {
     flexPosition: {
       flexDirection: 'row',
@@ -43,16 +55,4 @@ export class FlexComponent {
       pl: '',
     },
   };
-
-  @Input() set flexPosition(flexPosition: FlexPositionProps) {
-    this.flexProps.flexPosition = flexPosition;
-  }
-
-  @Input() set dimensions(dimensions: DimensionProps) {
-    this.flexProps.dimensions = dimensions;
-  }
-
-  @Input() set spacing(spacing: SpacingProps) {
-    this.flexProps.spacing = spacing;
-  }
 }

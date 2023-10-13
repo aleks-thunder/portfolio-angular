@@ -7,6 +7,7 @@ import { HeaderComponent } from '@pages/header/header.component';
 import { AboutComponent } from '@pages/about/about.component';
 import { TechStackComponent } from '@pages/tech-stack/tech-stack.component';
 import { ContactComponent } from '@pages/contact/contact.component';
+import { HttpClientModule } from '@angular/common/http';
 
 import { EmailService } from '@services/email.service';
 
@@ -20,7 +21,7 @@ import { SharedModule } from '@shared/shared.module';
     TechStackComponent,
     ContactComponent,
   ],
-  imports: [BrowserModule, SharedModule],
+  imports: [BrowserModule, HttpClientModule, SharedModule],
   providers: [EmailService],
   bootstrap: [AppComponent],
 })

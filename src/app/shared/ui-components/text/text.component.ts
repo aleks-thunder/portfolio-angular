@@ -11,6 +11,14 @@ import { Component, Input } from '@angular/core';
   styleUrls: [],
 })
 export class TextComponent {
+  @Input() set fontWeight(fontWeight: keyof typeof this.fontWeights) {
+    this.textProps.fontWeight = this.fontWeights[fontWeight];
+  }
+
+  @Input() set scale(fontSize: keyof typeof this.fontSizes) {
+    this.textProps.scale = this.fontSizes[fontSize];
+  }
+
   fontWeights = {
     light: 200,
     medium: 400,
@@ -28,12 +36,4 @@ export class TextComponent {
     fontWeight: this.fontWeights.medium,
     scale: this.fontSizes.m,
   };
-
-  @Input() set fontWeight(fontWeight: keyof typeof this.fontWeights) {
-    this.textProps.fontWeight = this.fontWeights[fontWeight];
-  }
-
-  @Input() set scale(fontSize: keyof typeof this.fontSizes) {
-    this.textProps.scale = this.fontSizes[fontSize];
-  }
 }

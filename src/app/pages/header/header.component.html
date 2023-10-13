@@ -1,7 +1,19 @@
 <div class="header">
-  <div class="header-bar">
-    <span>aleks_thunder</span>
-  </div>
+  <flex class="header-bar">
+    <flex [spacing]="{ ml: '20px' }">
+      <svg-icon
+        [svg]="'code-box'"
+        [width]="'36px'"
+        [height]="'36px'"
+      ></svg-icon>
+      <flex
+        [spacing]="{ ml: '20px' }"
+        [dimensions]="{ height: '100%' }"
+        [flexPosition]="{ alignItems: 'center' }"
+        >aleks_thunder</flex
+      >
+    </flex>
+  </flex>
 
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <ol class="breadcrumb">
