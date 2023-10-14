@@ -1,0 +1,22 @@
+.rounded-image {
+  border-radius: 50%;
+}
+
+.skeleton {
+  width: 100%;
+  height: 100%;
+  background: rgb(179, 179, 179, 0.5);
+  animation: loading 2s infinite;
+}
+
+@keyframes loading {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.1;
+  }
+  100% {
+    opacity: 1;
+  }
+}

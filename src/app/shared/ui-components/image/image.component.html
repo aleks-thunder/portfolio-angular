@@ -1,0 +1,12 @@
+<ng-container *ngIf="imgSrc; else loadingSkeleton">
+  <img [src]="imgSrc" [width]="width" [height]="height" [class]="imgStyle" />
+</ng-container>
+
+<ng-template #loadingSkeleton>
+  <div
+    class="skeleton"
+    [style.width]="width"
+    [style.height]="height"
+    [class]="imgStyle"
+  ></div>
+</ng-template>
