@@ -9,7 +9,7 @@ import { TechStackComponent } from '@pages/tech-stack/tech-stack.component';
 import { ContactComponent } from '@pages/contact/contact.component';
 import { HttpClientModule } from '@angular/common/http';
 
-import { EmailService } from '@services/email.service';
+import { EmailService } from '@services/email/email.service';
 
 import { SharedModule } from '@shared/shared.module';
 

@@ -1,15 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { EmailService } from 'src/app/services/email.service';
+import { Component } from '@angular/core';
+// import { EmailService } from '@services/email/email.service';
 
 @Component({
   selector: 'app-contact',
   templateUrl: './contact.component.html',
   styleUrls: ['./contact.component.scss'],
 })
-export class ContactComponent implements OnInit {
-  constructor(private emailService: EmailService) {}
-
-  ngOnInit() {
-    // this.emailService.sendEmail();
-  }
+export class ContactComponent {
+  // constructor(private emailService: EmailService) {}
 }

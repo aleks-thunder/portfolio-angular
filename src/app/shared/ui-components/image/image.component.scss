@@ -1,5 +1,30 @@
+.image-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1;
+  height: 100%;
+}
+
 .rounded-image {
   border-radius: 50%;
+}
+
+.overlay {
+  background: rgba(0, 0, 0, 0.6);
+  cursor: zoom-out;
+}
+
+.zoomed-img {
+  animation: zoom 0.3s;
+}
+
+.img-border {
+  border: 2px solid #94cfe4;
 }
 
 .skeleton {
@@ -18,5 +43,14 @@
   }
   100% {
     opacity: 1;
+  }
+}
+
+@keyframes zoom {
+  0% {
+    transform: scale(0.4);
+  }
+  100% {
+    transform: scale(1);
   }
 }

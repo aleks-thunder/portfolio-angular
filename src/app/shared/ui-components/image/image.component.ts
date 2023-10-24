@@ -10,15 +10,23 @@ export class ImageComponent {
   @Input() width: string = '0';
   @Input() height: string = '0';
   @Input() isRounded: boolean = false;
+  @Input() cursor: string = 'default';
+  @Input() zoom: boolean = false;
+  @Input() withBorder: boolean = false;
 
   imgSrc: string = '';
   imgExtension: string = '';
   imgStyle: string = '';
+  isZoomed: boolean = false;
 
   private image!: HTMLImageElement;
 
   ngOnInit() {
     this.loadImage();
+
+    this.imgStyle =
+      (this.isRounded ? 'rounded-image ' : '') +
+      (this.withBorder ? 'img-border' : '');
   }
 
   ngOnDestroy() {
@@ -28,25 +36,25 @@ export class ImageComponent {
   }
 
   private loadImage() {
-    const supportedExtensions = ['.jpg', '.jpeg', '.png', '.gif', '.webp'];
+    const supportedExtensions = ['.png', '.jpg', '.jpeg', '.gif', '.webp'];
     this.image = new Image();
+    let extensionIndex = 0;
 
-    const tryLoadingExtension = (index: number) => {
-      if (index < supportedExtensions.length) {
-        const extension = supportedExtensions[index];
-        this.image.src = `assets/images/${this.src}${extension}`;
+    this.image.onload = () => {
+      this.imgExtension = supportedExtensions[extensionIndex];
+      this.imgSrc = this.image.src;
+    };
 
-        this.image.addEventListener('load', () => {
-          this.imgExtension = extension;
-          this.imgSrc = this.image.src;
-        });
-        this.image.addEventListener('error', () => {
-          console.log('Image not found.');
-        });
+    this.image.onerror = () => {
+      extensionIndex++;
+      if (extensionIndex < supportedExtensions.length) {
+        this.image.src = `assets/images/${this.src}${supportedExtensions[extensionIndex]}`;
+      } else {
+        // TODO
+        this.imgSrc = 'assets/images/default.png';
       }
     };
 
-    tryLoadingExtension(0);
-    this.imgStyle = this.isRounded ? 'rounded-image' : '';
+    this.image.src = `assets/images/${this.src}${supportedExtensions[extensionIndex]}`;
   }
 }

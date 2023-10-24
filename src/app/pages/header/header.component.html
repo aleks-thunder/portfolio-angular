@@ -13,14 +13,14 @@
 
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <ol class="breadcrumb">
-      <li class="breadcrumb-item">
-        <a (click)="scrollToElement('about')">About</a>
+      <li class="breadcrumb-item" (click)="scrollToElement('about')">
+        <action-link [scale]="isMobile ? 'xs' : 'm'">About</action-link>
       </li>
       <li class="breadcrumb-item" (click)="scrollToElement('tech-stack')">
-        <a>Tech stack</a>
+        <action-link [scale]="isMobile ? 'xs' : 'm'">Tech stack</action-link>
       </li>
       <li class="breadcrumb-item" (click)="scrollToElement('contact')">
-        <a>Contact</a>
+        <action-link [scale]="isMobile ? 'xs' : 'm'">Contact</action-link>
       </li>
     </ol>
   </nav>

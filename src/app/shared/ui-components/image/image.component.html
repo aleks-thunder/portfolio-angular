@@ -1,5 +1,26 @@
 <ng-container *ngIf="imgSrc; else loadingSkeleton">
-  <img [src]="imgSrc" [width]="width" [height]="height" [class]="imgStyle" />
+  <div
+    class="image-container"
+    [class]="isZoomed ? 'overlay' : ''"
+    *ngIf="zoom && isZoomed"
+    (click)="isZoomed = !isZoomed"
+  >
+    <img
+      [class]="'imgStyle zoomed-img'"
+      [src]="imgSrc"
+      [style.width]="isZoomed ? '60vw' : width"
+      [style.height]="isZoomed ? 'height' : height"
+      [style.cursor]="isZoomed ? 'zoom-out' : cursor"
+    />
+  </div>
+  <img
+    [class]="imgStyle"
+    [src]="imgSrc"
+    [style.width]="width"
+    [style.height]="height"
+    [style.cursor]="cursor"
+    (click)="isZoomed = !isZoomed"
+  />
 </ng-container>
 
 <ng-template #loadingSkeleton>
