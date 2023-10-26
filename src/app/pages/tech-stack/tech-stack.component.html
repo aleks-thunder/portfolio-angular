@@ -1,0 +1,36 @@
+<div class="bg">
+  <div class="lines">
+    <ng-container *ngFor="let _ of [].constructor(5)">
+      <div class="line"></div>
+    </ng-container>
+  </div>
+
+  <flex [flexPosition]="{ justifyContent: 'center' }">
+    <text class="gradient-text" fontWeight="bold" scale="h1"
+      >Specification</text
+    >
+  </flex>
+
+  <flex
+    class="tech-block"
+    [flexPosition]="{ flexWrap: 'wrap', justifyContent: 'space-evenly' }"
+  >
+    <ng-container *ngFor="let svg of svgSrc">
+      <flex
+        class="block"
+        [flexPosition]="{
+          alignItems: 'center',
+          flexDirection: 'column'
+        }"
+        [dimensions]="{ width: responsiveWidth, height: '200px' }"
+      >
+        <svg-icon [svg]="svg.src" width="100px" height="100px"></svg-icon>
+        <flex [spacing]="{ mt: '20px', px: '20px' }">
+          <text scale="xl" fontWeight="bold" textAlign="center">{{
+            svg.description
+          }}</text>
+        </flex>
+      </flex>
+    </ng-container>
+  </flex>
+</div>

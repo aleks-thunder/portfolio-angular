@@ -1,8 +1,5 @@
 <div class="bg">
-  <flex
-    [spacing]="{ mt: '100px',  }"
-    [flexPosition]="{ flexDirection: 'column' }"
-  >
+  <flex [flexPosition]="{ flexDirection: 'column' }">
     <ng-container *ngIf="isDesktop">
       <flex [flexPosition]="{ alignItems: 'center', flexDirection: 'row' }">
         <ng-container *ngTemplateOutlet="imageContainer1"></ng-container>
@@ -29,12 +26,7 @@
     [spacing]="{ mt: '20px', mx: isDesktop ? '30px' : '20px' }"
     [flexPosition]="{ flexDirection: 'column', alignItems: 'center' }"
   >
-    <image
-      [src]="'me'"
-      [width]="'200px'"
-      [height]="'200px'"
-      [isRounded]="true"
-    ></image>
+    <image src="me" width="200px" height="200px" [isRounded]="true"></image>
 
     <text [scale]="'h1'" [fontWeight]="'bold'" [textAlign]="'center'">
       MOISIEIENKO OLEKSANDR

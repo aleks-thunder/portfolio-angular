@@ -11,8 +11,7 @@ export class HeaderComponent {
   constructor(public mediaQueryService: MediaQueryService) {}
   @HostListener('window:resize', ['$event'])
   onResize() {
-    this.mediaQueryService.getActiveMediaQuery();
-    this.isMobile = this.mediaQueryService.isMobileView();
+    this.isMobile = this.mediaQueryService.isView('mobile');
   }
 
   ngOnInit() {
@@ -22,7 +21,14 @@ export class HeaderComponent {
   scrollToElement(elementId: string) {
     const element = document.getElementById(elementId);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      const headerHeight = 100;
+      const scrollPosition =
+        element.getBoundingClientRect().top + window.scrollY - headerHeight;
+
+      window.scrollTo({
+        top: scrollPosition,
+        behavior: 'smooth',
+      });
     }
   }
 }

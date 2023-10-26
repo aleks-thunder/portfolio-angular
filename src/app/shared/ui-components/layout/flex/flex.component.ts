@@ -15,7 +15,9 @@ export class FlexComponent {
   @Input() set flexPosition(flexPosition: FlexPositionProps) {
     this.flexProps.flexPosition = flexPosition;
   }
-
+  @Input() set flex(flex: FlexPositionProps) {
+    this.flexProps.flexPosition = flex;
+  }
   @Input() set dimensions(dimensions: DimensionProps) {
     this.flexProps.dimensions = dimensions;
   }

@@ -29,6 +29,7 @@ export type SpacingProps = {
 };
 
 export type FlexPositionProps = {
+  flex?: string;
   flexDirection?: 'row' | 'row-reverse' | 'column' | 'column-reverse';
   flexWrap?: 'no-wrap' | 'wrap';
   alignContent?:
