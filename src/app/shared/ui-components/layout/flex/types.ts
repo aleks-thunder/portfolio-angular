@@ -1,5 +1,10 @@
 export type FlexProps = {
-  flexPosition: FlexPositionProps;
+  flex: string;
+  flexDirection: FlexDirection;
+  justifyContent: JustifyContent;
+  alignContent: AlignContent;
+  alignItems: AlignItems;
+  flexWrap: 'no-wrap' | 'wrap';
   dimensions: DimensionProps;
   spacing: SpacingProps;
 };
@@ -28,31 +33,29 @@ export type SpacingProps = {
   pl?: string;
 };
 
-export type FlexPositionProps = {
-  flex?: string;
-  flexDirection?: 'row' | 'row-reverse' | 'column' | 'column-reverse';
-  flexWrap?: 'no-wrap' | 'wrap';
-  alignContent?:
-    | 'normal'
-    | 'center'
-    | 'flex-start'
-    | 'flex-end'
-    | 'space-around'
-    | 'space-between'
-    | 'stretch';
-  justifyContent?:
-    | 'normal'
-    | 'center'
-    | 'flex-start'
-    | 'flex-end'
-    | 'space-between'
-    | 'space-around'
-    | 'space-evenly';
-  alignItems?:
-    | 'normal'
-    | 'center'
-    | 'flex-start'
-    | 'flex-end'
-    | 'stretch'
-    | 'baseline';
-};
+export type FlexWrap = 'no-wrap' | 'wrap';
+export type FlexDirection = 'row' | 'row-reverse' | 'column' | 'column-reverse';
+export type AlignContent =
+  | 'normal'
+  | 'center'
+  | 'flex-start'
+  | 'flex-end'
+  | 'space-around'
+  | 'space-between'
+  | 'stretch';
+
+export type JustifyContent =
+  | 'normal'
+  | 'center'
+  | 'flex-start'
+  | 'flex-end'
+  | 'space-between'
+  | 'space-around'
+  | 'space-evenly';
+export type AlignItems =
+  | 'normal'
+  | 'center'
+  | 'flex-start'
+  | 'flex-end'
+  | 'stretch'
+  | 'baseline';

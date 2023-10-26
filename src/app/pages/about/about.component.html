@@ -1,7 +1,7 @@
 <div class="bg">
-  <flex [flexPosition]="{ flexDirection: 'column' }">
+  <flex flexDirection="column">
     <ng-container *ngIf="isDesktop">
-      <flex [flexPosition]="{ alignItems: 'center', flexDirection: 'row' }">
+      <flex alignItems="center">
         <ng-container *ngTemplateOutlet="imageContainer1"></ng-container>
 
         <ng-container *ngTemplateOutlet="aboutMe"></ng-container>
@@ -11,7 +11,7 @@
     </ng-container>
 
     <ng-container *ngIf="!isDesktop">
-      <flex [flexPosition]="{ alignItems: 'center', flexDirection: 'column' }">
+      <flex alignItems="center" flexDirection="column">
         <ng-container *ngTemplateOutlet="aboutMe"></ng-container>
         <flex>
           <ng-container *ngTemplateOutlet="imageContainer3"></ng-container>
@@ -23,31 +23,33 @@
 
 <ng-template #aboutMe>
   <flex
-    [spacing]="{ mt: '20px', mx: isDesktop ? '30px' : '20px' }"
-    [flexPosition]="{ flexDirection: 'column', alignItems: 'center' }"
+    mt="20px"
+    [mx]="isDesktop ? '30px' : '20px'"
+    alignItems="center"
+    flexDirection="column"
   >
     <image src="me" width="200px" height="200px" [isRounded]="true"></image>
 
-    <text [scale]="'h1'" [fontWeight]="'bold'" [textAlign]="'center'">
+    <text scale="h1" fontWeight="bold" textAlign="center">
       MOISIEIENKO OLEKSANDR
     </text>
-    <text [textAlign]="'justify'">
+    <text textAlign="justify">
       With over 3.5 years of experience in the software engineering industry, I
       have honed my skills in frontend development.
     </text>
-    <text [textAlign]="'justify'">
+    <text textAlign="justify">
       I am highly motivated, a quick learner, and passionate about staying
       updated with the latest technologies. My ability to work effectively in a
       team and my dedication to continuous learning make me an ideal fit for
       your team.
     </text>
-    <text [textAlign]="'justify'"> </text>
-    <text [textAlign]="'justify'">
+    <text textAlign="justify"> </text>
+    <text textAlign="justify">
       My English proficiency, both spoken and written, is at a high level,
       enabling me to collaborate effectively and maintain clear communication
       with team members and clients.
     </text>
-    <text [textAlign]="'justify'">
+    <text textAlign="justify">
       I possess a strong command of ES6, Angular, React, TypeScript, HTML5,
       CSS3, and web3 technologies. Additionally, I have experience with NodeJS,
       Express, MongoDB and Firebase, which gives me a broader understanding of
@@ -57,10 +59,7 @@
 </ng-template>
 
 <ng-template #imageContainer1>
-  <flex
-    [flexPosition]="{ alignItems: 'center', flexDirection: 'column' }"
-    [spacing]="{ my: '20px' }"
-  >
+  <flex alignItems="center" flexDirection="column" my="20px">
     <ng-container
       *ngFor="
         let image of imageSrc.slice(0, 3);
@@ -68,12 +67,7 @@
         let isLastImage = last
       "
     >
-      <flex
-        [spacing]="{
-          my: '10px',
-          ml: isFirstImage || isLastImage ? '40px' : '0px'
-        }"
-      >
+      <flex my="10px" [ml]="isFirstImage || isLastImage ? '40px' : '0px'">
         <image
           [src]="image.src"
           [width]="responsiveWidth"
@@ -88,11 +82,11 @@
 </ng-template>
 
 <ng-template #imageContainer2>
-  <flex [flexPosition]="{ alignItems: 'center', flexDirection: 'column' }">
+  <flex alignItems="center" flexDirection="column">
     <ng-container
       *ngFor="let image of imageSrc.slice(3, 5); let isFirstImage = first"
     >
-      <flex [spacing]="{ mr: isFirstImage ? '0px' : '40px', my: '10px' }">
+      <flex [mr]="isFirstImage ? '0px' : '40px'" my="10px">
         <image
           [src]="image.src"
           [width]="responsiveWidth"
@@ -107,14 +101,11 @@
 </ng-template>
 
 <ng-template #imageContainer3>
-  <flex
-    [flexPosition]="{ alignItems: 'center', flexDirection: 'column' }"
-    [spacing]="{ my: '20px' }"
-  >
+  <flex flexDirection="column" alignItems="center" my="20px">
     <ng-container *ngIf="!isMobile && !isDesktop">
       <flex>
         <ng-container *ngFor="let image of imageSrc.slice(0, 3)">
-          <flex [spacing]="{ mx: '10px' }">
+          <flex mx="10px">
             <image
               [src]="image.src"
               [width]="responsiveWidth"
@@ -126,9 +117,9 @@
           </flex>
         </ng-container>
       </flex>
-      <flex [spacing]="{ my: '20px' }">
+      <flex my="20px">
         <ng-container *ngFor="let image of imageSrc.slice(3, 5)">
-          <flex [spacing]="{ mx: '10px' }">
+          <flex mx="10px">
             <image
               [src]="image.src"
               [width]="responsiveWidth"
@@ -143,7 +134,7 @@
     </ng-container>
     <ng-container *ngIf="isMobile">
       <ng-container *ngFor="let image of imageSrc">
-        <flex [spacing]="{ mx: '20px', my: '10px' }">
+        <flex mx="20px" my="10px">
           <image
             [src]="image.src"
             [width]="responsiveWidth"
