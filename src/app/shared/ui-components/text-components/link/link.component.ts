@@ -7,34 +7,20 @@ import {
   fontWeights,
   scales,
 } from '../types';
+import { TextComponent } from '../text/text.component';
 
 @Component({
   selector: 'action-link',
-  template: `<a
-    [style.fontWeight]="linkProps.fontWeight"
-    [style.fontSize]="linkProps.scale"
-    [style.textAlign]="linkProps.textAlign"
-    [style.cursor]="linkProps.cursor"
-  >
-    <ng-content></ng-content>
-  </a>`,
+  template: `<a [ngStyle]="getStyles()"><ng-content></ng-content></a>`,
 })
-export class LinkComponent {
-  @Input() set fontWeight(fontWeight: FontWeights) {
-    this.linkProps.fontWeight = fontWeights[fontWeight];
-  }
+export class LinkComponent extends TextComponent {
+  @Input() cursor: string = 'pointer';
 
-  @Input() set scale(scale: Scales) {
-    this.linkProps.scale = scales[scale];
+  override getStyles() {
+    const parentStyles = super.getStyles();
+    return {
+      ...parentStyles,
+      cursor: this.cursor,
+    };
   }
-  @Input() set textAlign(justify: keyof typeof TextAlign) {
-    this.linkProps.textAlign = TextAlign[justify];
-  }
-
-  linkProps: TextProps = {
-    fontWeight: fontWeights['semiBold'],
-    scale: scales['m'],
-    textAlign: TextAlign.justify,
-    cursor: 'pointer',
-  };
 }

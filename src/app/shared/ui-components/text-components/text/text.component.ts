@@ -10,29 +10,18 @@ import {
 
 @Component({
   selector: 'text',
-  template: `<p
-    [style.fontWeight]="textProps.fontWeight"
-    [style.fontSize]="textProps.scale"
-    [style.textAlign]="textProps.textAlign"
-  >
-    <ng-content></ng-content>
-  </p>`,
+  template: `<p [ngStyle]="getStyles()"><ng-content></ng-content></p>`,
 })
 export class TextComponent {
-  @Input() set fontWeight(fontWeight: FontWeights) {
-    this.textProps.fontWeight = fontWeights[fontWeight];
-  }
+  @Input() fontWeight: FontWeights = 'medium';
+  @Input() scale: Scales = 'm';
+  @Input() textAlign: keyof typeof TextAlign = 'justify';
 
-  @Input() set scale(scale: Scales) {
-    this.textProps.scale = scales[scale];
+  getStyles() {
+    return {
+      'font-weight': fontWeights[this.fontWeight],
+      'font-size': scales[this.scale],
+      'text-align': TextAlign[this.textAlign],
+    };
   }
-  @Input() set textAlign(justify: keyof typeof TextAlign) {
-    this.textProps.textAlign = TextAlign[justify];
-  }
-
-  textProps: TextProps = {
-    fontWeight: fontWeights['medium'],
-    scale: scales['m'],
-    textAlign: TextAlign.justify,
-  };
 }

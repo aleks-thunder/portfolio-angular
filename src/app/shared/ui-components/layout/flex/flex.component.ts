@@ -10,86 +10,74 @@ import {
 
 @Component({
   selector: 'flex',
-  templateUrl: './flex.component.html',
-  styleUrls: [],
+  template: `<div [ngStyle]="getStyles()">
+    <ng-content></ng-content>
+  </div>`,
 })
 export class FlexComponent {
-  @Input() set flex(flex: string) {
-    this.flexProps.flex = flex;
-  }
-  @Input() set flexWrap(wrap: FlexWrap) {
-    this.flexProps.flexWrap = wrap;
-  }
-  @Input() set flexDirection(direction: FlexDirection) {
-    this.flexProps.flexDirection = direction;
-  }
-  @Input() set justifyContent(justify: JustifyContent) {
-    this.flexProps.justifyContent = justify;
-  }
-  @Input() set alignContent(align: AlignContent) {
-    this.flexProps.alignContent = align;
-  }
-  @Input() set alignItems(align: AlignItems) {
-    this.flexProps.alignItems = align;
-  }
+  // flex position
+  @Input() flex = '';
+  @Input() flexWrap: FlexWrap = 'no-wrap';
+  @Input() flexDirection: FlexDirection = 'row';
+  @Input() justifyContent: JustifyContent = 'normal';
+  @Input() alignContent: AlignContent = 'normal';
+  @Input() alignItems: AlignItems = 'normal';
 
   // dimensions
-  @Input() set width(width: string) {
-    this.flexProps.dimensions.width = width;
-  }
-  @Input() set maxWidth(maxWidth: string) {
-    this.flexProps.dimensions.maxHeight = maxWidth;
-  }
-  @Input() set height(height: string) {
-    this.flexProps.dimensions.height = height;
-  }
-  @Input() set maxHeight(maxHeight: string) {
-    this.flexProps.dimensions.maxHeight = maxHeight;
-  }
+  @Input() width: string = '';
+  @Input() maxWidth: string = '';
+  @Input() height: string = '';
+  @Input() maxHeight: string = '';
 
   // spacing
-  @Input() set m(m: string) {
-    this.flexProps.spacing.m = m;
-  }
-  @Input() set mx(mx: string) {
-    this.flexProps.spacing.mx = mx;
-  }
-  @Input() set my(my: string) {
-    this.flexProps.spacing.my = my;
-  }
-  @Input() set mt(mt: string) {
-    this.flexProps.spacing.mt = mt;
-  }
-  @Input() set mr(mr: string) {
-    this.flexProps.spacing.mr = mr;
-  }
-  @Input() set mb(mb: string) {
-    this.flexProps.spacing.mb = mb;
-  }
-  @Input() set ml(ml: string) {
-    this.flexProps.spacing.ml = ml;
-  }
+  @Input() m: string = '';
+  @Input() mx: string = '';
+  @Input() my: string = '';
+  @Input() mt: string = '';
+  @Input() mr: string = '';
+  @Input() mb: string = '';
+  @Input() ml: string = '';
 
-  @Input() set p(p: string) {
-    this.flexProps.spacing.p = p;
-  }
-  @Input() set px(px: string) {
-    this.flexProps.spacing.px = px;
-  }
-  @Input() set py(py: string) {
-    this.flexProps.spacing.py = py;
-  }
-  @Input() set pt(pt: string) {
-    this.flexProps.spacing.pt = pt;
-  }
-  @Input() set pr(pr: string) {
-    this.flexProps.spacing.pr = pr;
-  }
-  @Input() set pb(pb: string) {
-    this.flexProps.spacing.pb = pb;
-  }
-  @Input() set pl(pl: string) {
-    this.flexProps.spacing.pl = pl;
+  @Input() p: string = '';
+  @Input() px: string = '';
+  @Input() py: string = '';
+  @Input() pt: string = '';
+  @Input() pr: string = '';
+  @Input() pb: string = '';
+  @Input() pl: string = '';
+
+  getStyles() {
+    const styles: { [key: string]: any } = {
+      display: 'flex',
+      flex: this.flex,
+      'flex-direction': this.flexDirection,
+      'justify-content': this.justifyContent,
+      'align-items': this.alignItems,
+      'align-content': this.alignContent,
+      'flex-wrap': this.flexWrap,
+      width: this.width,
+      'max-width': this.maxWidth,
+      height: this.height,
+      'max-height': this.maxHeight,
+    };
+
+    styles['margin-top'] = this.mt || this.my || this.m;
+    styles['margin-right'] = this.mr || this.mx || this.m;
+    styles['margin-bottom'] = this.mb || this.my || this.m;
+    styles['margin-left'] = this.ml || this.mx || this.m;
+    styles['padding-top'] = this.pt || this.py || this.p;
+    styles['padding-right'] = this.pr || this.px || this.p;
+    styles['padding-bottom'] = this.pb || this.py || this.p;
+    styles['padding-left'] = this.pl || this.px || this.p;
+
+    // Remove styles with empty values
+    Object.keys(styles).forEach((key) => {
+      if (styles[key] === '') {
+        delete styles[key];
+      }
+    });
+
+    return styles;
   }
 
   flexProps: FlexProps = {
@@ -99,29 +87,5 @@ export class FlexComponent {
     alignContent: 'normal',
     justifyContent: 'normal',
     alignItems: 'normal',
-
-    dimensions: {
-      width: '',
-      maxWidth: '',
-      height: '',
-      maxHeight: '',
-    },
-
-    spacing: {
-      m: '',
-      mx: '',
-      my: '',
-      mt: '',
-      mr: '',
-      mb: '',
-      ml: '',
-      p: '',
-      px: '',
-      py: '',
-      pt: '',
-      pr: '',
-      pb: '',
-      pl: '',
-    },
   };
 }
