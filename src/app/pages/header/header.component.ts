@@ -6,7 +6,7 @@ import { MediaQueryService } from '@services/media-query/media-query.service';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
-  isMobile: boolean = false;
+  isMobile = false;
 
   constructor(public mediaQueryService: MediaQueryService) {}
   @HostListener('window:resize', ['$event'])

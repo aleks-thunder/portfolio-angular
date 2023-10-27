@@ -8,6 +8,7 @@
     <img
       [class]="'imgStyle zoomed-img'"
       [src]="imgSrc"
+      [alt]="alt"
       [style.width]="isZoomed ? '60vw' : width"
       [style.height]="isZoomed ? 'height' : height"
       [style.cursor]="isZoomed ? 'zoom-out' : cursor"
@@ -16,6 +17,7 @@
   <img
     [class]="imgStyle"
     [src]="imgSrc"
+    [alt]="alt"
     [style.width]="width"
     [style.height]="height"
     [style.cursor]="cursor"

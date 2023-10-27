@@ -6,18 +6,19 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./image.component.scss'],
 })
 export class ImageComponent {
-  @Input() src: string = '';
-  @Input() width: string = '0';
-  @Input() height: string = '0';
-  @Input() isRounded: boolean = false;
-  @Input() cursor: string = 'default';
-  @Input() zoom: boolean = false;
-  @Input() withBorder: boolean = false;
+  @Input() src = '';
+  @Input() alt = '';
+  @Input() width = '0';
+  @Input() height = '0';
+  @Input() isRounded = false;
+  @Input() cursor = 'default';
+  @Input() zoom = false;
+  @Input() withBorder = false;
 
-  imgSrc: string = '';
-  imgExtension: string = '';
-  imgStyle: string = '';
-  isZoomed: boolean = false;
+  imgSrc = '';
+  imgExtension = '';
+  imgStyle = '';
+  isZoomed = false;
 
   private image!: HTMLImageElement;
 

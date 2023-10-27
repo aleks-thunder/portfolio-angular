@@ -1,12 +1,5 @@
 import { Component, Input } from '@angular/core';
-import {
-  FontWeights,
-  Scales,
-  TextAlign,
-  TextProps,
-  fontWeights,
-  scales,
-} from '../types';
+
 import { TextComponent } from '../text/text.component';
 
 @Component({
@@ -14,7 +7,7 @@ import { TextComponent } from '../text/text.component';
   template: `<a [ngStyle]="getStyles()"><ng-content></ng-content></a>`,
 })
 export class LinkComponent extends TextComponent {
-  @Input() cursor: string = 'pointer';
+  @Input() cursor = 'pointer';
 
   override getStyles() {
     const parentStyles = super.getStyles();

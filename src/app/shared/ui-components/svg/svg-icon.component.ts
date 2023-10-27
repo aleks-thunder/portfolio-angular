@@ -9,20 +9,23 @@ import { Observable, map } from 'rxjs';
   styleUrls: ['./svg-icon.component.scss'],
 })
 export class SvgIconComponent {
-  @Input() svg: string = '';
-  @Input() height: string = '24px';
-  @Input() width: string = '24px';
-  @Input() cursor: string = 'default';
+  @Input() svg = '';
+  @Input() height = '24px';
+  @Input() width = '24px';
+  @Input() cursor = 'default';
 
   svgContent$?: Observable<SafeHtml>;
 
-  constructor(private http: HttpClient, private sanitizer: DomSanitizer) {}
+  constructor(
+    private http: HttpClient,
+    private sanitizer: DomSanitizer
+  ) {}
 
   ngOnInit() {
     const svgPath = `assets/svg/${this.svg}.svg`;
 
     this.svgContent$ = this.http.get(svgPath, { responseType: 'text' }).pipe(
-      map((data) => {
+      map(data => {
         data = data.replace(
           '<svg',
           `<svg height="${this.height}" width="${this.width}" `

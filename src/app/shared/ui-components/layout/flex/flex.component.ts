@@ -24,30 +24,30 @@ export class FlexComponent {
   @Input() alignItems: AlignItems = 'normal';
 
   // dimensions
-  @Input() width: string = '';
-  @Input() maxWidth: string = '';
-  @Input() height: string = '';
-  @Input() maxHeight: string = '';
+  @Input() width = '';
+  @Input() maxWidth = '';
+  @Input() height = '';
+  @Input() maxHeight = '';
 
   // spacing
-  @Input() m: string = '';
-  @Input() mx: string = '';
-  @Input() my: string = '';
-  @Input() mt: string = '';
-  @Input() mr: string = '';
-  @Input() mb: string = '';
-  @Input() ml: string = '';
+  @Input() m = '';
+  @Input() mx = '';
+  @Input() my = '';
+  @Input() mt = '';
+  @Input() mr = '';
+  @Input() mb = '';
+  @Input() ml = '';
 
-  @Input() p: string = '';
-  @Input() px: string = '';
-  @Input() py: string = '';
-  @Input() pt: string = '';
-  @Input() pr: string = '';
-  @Input() pb: string = '';
-  @Input() pl: string = '';
+  @Input() p = '';
+  @Input() px = '';
+  @Input() py = '';
+  @Input() pt = '';
+  @Input() pr = '';
+  @Input() pb = '';
+  @Input() pl = '';
 
   getStyles() {
-    const styles: { [key: string]: any } = {
+    const styles: { [key: string]: string } = {
       display: 'flex',
       flex: this.flex,
       'flex-direction': this.flexDirection,
@@ -71,7 +71,7 @@ export class FlexComponent {
     styles['padding-left'] = this.pl || this.px || this.p;
 
     // Remove styles with empty values
-    Object.keys(styles).forEach((key) => {
+    Object.keys(styles).forEach(key => {
       if (styles[key] === '') {
         delete styles[key];
       }

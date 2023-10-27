@@ -1,12 +1,5 @@
 import { Component, Input } from '@angular/core';
-import {
-  FontWeights,
-  Scales,
-  TextAlign,
-  TextProps,
-  fontWeights,
-  scales,
-} from '../types';
+import { FontWeights, Scales, TextAlign, fontWeights, scales } from '../types';
 
 @Component({
   selector: 'text',

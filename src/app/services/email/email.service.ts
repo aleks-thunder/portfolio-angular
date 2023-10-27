@@ -20,10 +20,10 @@ export class EmailService {
         'sLlI8-O7L-X5k3kQf'
       )
       .then(
-        (response) => {
+        response => {
           console.log('SUCCESS!', response.status, response.text);
         },
-        (err) => {
+        err => {
           console.log('FAILED...', err);
         }
       );

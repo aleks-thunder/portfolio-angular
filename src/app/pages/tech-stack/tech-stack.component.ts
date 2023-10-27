@@ -10,7 +10,7 @@ import { svgSrc } from '@shared/constants/src-names';
 export class TechStackComponent {
   svgSrc = svgSrc;
 
-  responsiveWidth: string = '20vw';
+  responsiveWidth = '20vw';
 
   constructor(private responsiveValuesService: ResponsiveValuesService) {}
 

@@ -10,11 +10,11 @@ import { imageSrc } from '@shared/constants/src-names';
 export class AboutComponent {
   imageSrc = imageSrc;
 
-  isDesktop: boolean = false;
-  isMobile: boolean = false;
+  isDesktop = false;
+  isMobile = false;
 
-  responsiveWidth: string = '400px';
-  responsiveHeight: string = '240px';
+  responsiveWidth = '400px';
+  responsiveHeight = '240px';
 
   constructor(
     private mediaQueryService: MediaQueryService,
